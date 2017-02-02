@@ -1,5 +1,6 @@
 'use strict';
 
+var pins = document.querySelectorAll('.pin');
 var pin = document.querySelector('.pin');
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
@@ -12,15 +13,19 @@ var type = document.getElementById('type');
 var roomNumber = document.getElementById('room_number');
 var capacity = document.getElementById('capacity');
 
-pin.addEventListener('click', function () {
-  if (pin.classList.contains('pin--active')) {
-    pin.classList.remove('pin--active');
-    dialog.style.display = 'none';
-  } else if (!pin.classList.contains('pin--active')) {
-    pin.classList.add('pin--active');
+function pinActive(event) {
+  for (var i = 0; i < pins.length; i++) {
+    if (pins[i].classList.contains('pin--active')) {
+      pins[i].classList.remove('pin--active');
+    }
+    this.classList.add('pin--active');
     dialog.style.display = 'block';
   }
-});
+}
+
+for (var i = 0; i < pins.length; i++) {
+  pins[i].addEventListener('click', pinActive);
+}
 
 dialogClose.addEventListener('click', function () {
   dialog.style.display = 'none';
@@ -34,10 +39,25 @@ title.minLength = 30;
 title.maxLength = 100;
 
 price.required = true;
-price.minLength = 1000;
-price.maxLength = 1000000;
+price.min = 1000;
+price.max = 1000000;
 
 address.required = true;
+
+function CustomValidation() {
+  var validity = price.validity;
+  if (validity.rangeOverflow) {
+    var max = price.max;
+    price.setCustomValidity('The maximum value should be ' + max);
+  }
+
+  if (validity.rangeUnderflow) {
+    var min = price.min;
+    price.setCustomValidity('The minimum value should be ' + min);
+  }
+}
+
+price.addEventListener('change', CustomValidation);
 
 time.addEventListener('click', function () {
   timeOut.value = time.value;
