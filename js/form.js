@@ -1,7 +1,7 @@
 'use strict';
 
 var pins = document.querySelectorAll('.pin');
-var pin = document.querySelector('.pin');
+var pinOne = document.querySelector('.pin');
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
 var title = document.getElementById('title');
@@ -18,14 +18,14 @@ for (var i = 0; i < pins.length; i++) {
   pinElement(pin);
 }
 
-function pinElement(pin) {
-  pin.addEventListener('click', pinActive);
-}
+function pinElement(pinUp) {
+  pinUp.addEventListener('click', pinActive);
+  function pinActive() {
+    for (var j = 0; j < pins.length; j++) {
+      if (pins[j].classList.contains('pin--active')) {
+        pins[j].classList.remove('pin--active');
+      }
 
-function pinActive(pin) {
-  for (var i = 0; i < pins.length; i++) {
-    if (pins[i].classList.contains('pin--active')) {
-      pins[i].classList.remove('pin--active');
     }
     pin.classList.add('pin--active');
     dialog.style.display = 'block';
@@ -34,8 +34,8 @@ function pinActive(pin) {
 
 dialogClose.addEventListener('click', function () {
   dialog.style.display = 'none';
-  if (pin.classList.contains('pin--active')) {
-    pin.classList.remove('pin--active');
+  if (pinOne.classList.contains('pin--active')) {
+    pinOne.classList.remove('pin--active');
   }
 });
 
