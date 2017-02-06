@@ -13,18 +13,23 @@ var type = document.getElementById('type');
 var roomNumber = document.getElementById('room_number');
 var capacity = document.getElementById('capacity');
 
-function pinActive(event) {
+for (var i = 0; i < pins.length; i++) {
+  var pin = pins[i];
+  pinElement(pin);
+}
+
+function pinElement(pin) {
+  pin.addEventListener('click', pinActive);
+}
+
+function pinActive(pin) {
   for (var i = 0; i < pins.length; i++) {
     if (pins[i].classList.contains('pin--active')) {
       pins[i].classList.remove('pin--active');
     }
-    this.classList.add('pin--active');
+    pin.classList.add('pin--active');
     dialog.style.display = 'block';
   }
-}
-
-for (var i = 0; i < pins.length; i++) {
-  pins[i].addEventListener('click', pinActive);
 }
 
 dialogClose.addEventListener('click', function () {
