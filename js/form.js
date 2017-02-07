@@ -2,7 +2,7 @@
 
 var pins = document.querySelectorAll('.pin');
 var pinOne = document.querySelector('.pin');
-var pinMap = document.querySelector('.tokyo__pin-map')
+var pinMap = document.querySelector('.tokyo__pin-map');
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
 var title = document.getElementById('title');
@@ -13,34 +13,31 @@ var timeOut = document.getElementById('timeout');
 var type = document.getElementById('type');
 var roomNumber = document.getElementById('room_number');
 var capacity = document.getElementById('capacity');
+var ENTER_KEY_CODE = 13;
 
-for (var i = 0; i < pins.length; i++) {
-  var pin = pins[i];
-  pinElement(pin);
-}
-
-function pinElement(pinUp) {
-  pinUp.addEventListener('click', pinActive);
-
-  function pinActive() {
+pinMap.addEventListener('click', function (event) {
+  var target = event.target;
+  if (target.parentNode.classList.contains('pin')) {
+    var targetParent = target.parentNode;
     for (var j = 0; j < pins.length; j++) {
       if (pins[j].classList.contains('pin--active')) {
         pins[j].classList.remove('pin--active');
         pins[j].setAttribute('aria-pressed', false);
       }
     }
-    pin.classList.add('pin--active');
+    targetParent.classList.add('pin--active');
     dialog.style.display = 'block';
-    pin.setAttribute('aria-pressed', true);
-  }
-}
-
-pinMap.addEventListener('keydown', function (e) {
-  if (e.keyCode === 13) {
-    dialog.style.display = 'block';
+    targetParent.setAttribute('aria-pressed', true);
   }
 });
 
+pinMap.addEventListener('keydown', function (e) {
+  var target = e.target;
+  if (e.keyCode === ENTER_KEY_CODE) {
+    dialog.style.display = 'block';
+    target.setAttribute('aria-pressed', true);
+  }
+});
 
 dialogClose.addEventListener('click', function () {
   dialog.style.display = 'none';
