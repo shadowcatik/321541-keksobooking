@@ -2,6 +2,7 @@
 
 var pins = document.querySelectorAll('.pin');
 var pinOne = document.querySelector('.pin');
+var pinMap = document.querySelector('.tokyo__pin-map')
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
 var title = document.getElementById('title');
@@ -20,17 +21,26 @@ for (var i = 0; i < pins.length; i++) {
 
 function pinElement(pinUp) {
   pinUp.addEventListener('click', pinActive);
+
   function pinActive() {
     for (var j = 0; j < pins.length; j++) {
       if (pins[j].classList.contains('pin--active')) {
         pins[j].classList.remove('pin--active');
+        pins[j].setAttribute('aria-pressed', false);
       }
-
     }
     pin.classList.add('pin--active');
     dialog.style.display = 'block';
+    pin.setAttribute('aria-pressed', true);
   }
 }
+
+pinMap.addEventListener('keydown', function (e) {
+  if (e.keyCode === 13) {
+    dialog.style.display = 'block';
+  }
+});
+
 
 dialogClose.addEventListener('click', function () {
   dialog.style.display = 'none';
