@@ -15,6 +15,12 @@ var roomNumber = document.getElementById('room_number');
 var capacity = document.getElementById('capacity');
 var ENTER_KEY_CODE = 13;
 
+function pinActive(pin) {
+    pin.classList.add('pin--active');
+    dialog.style.display = 'block';
+    pin.setAttribute('aria-pressed', true);
+}
+
 pinMap.addEventListener('click', function (event) {
   var target = event.target;
   if (target.parentNode.classList.contains('pin')) {
@@ -25,17 +31,14 @@ pinMap.addEventListener('click', function (event) {
         pins[j].setAttribute('aria-pressed', false);
       }
     }
-    targetParent.classList.add('pin--active');
-    dialog.style.display = 'block';
-    targetParent.setAttribute('aria-pressed', true);
+    pinActive(targetParent);
   }
 });
 
 pinMap.addEventListener('keydown', function (e) {
   var target = e.target;
   if (e.keyCode === ENTER_KEY_CODE) {
-    dialog.style.display = 'block';
-    target.setAttribute('aria-pressed', true);
+    pinActive(target);
   }
 });
 
