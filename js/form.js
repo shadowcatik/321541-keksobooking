@@ -23,7 +23,7 @@ function pinActive(pin) {
 
 pinMap.addEventListener('click', function (event) {
   var target = event.target;
-  if (target.parentNode.classList.contains('pin')) {
+  if (target.parentNode.classList.contains('pin') || target.classList.contains('pin')) {
     var targetParent = target.parentNode;
     for (var j = 0; j < pins.length; j++) {
       if (pins[j].classList.contains('pin--active')) {
