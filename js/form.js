@@ -21,17 +21,24 @@ function pinActive(pin) {
     pin.setAttribute('aria-pressed', true);
 }
 
+function pinRemove() {
+  for (var j = 0; j < pins.length; j++) {
+    if (pins[j].classList.contains('pin--active')) {
+      pins[j].classList.remove('pin--active');
+      pins[j].setAttribute('aria-pressed', false);
+    }
+  }
+}
+
 pinMap.addEventListener('click', function (event) {
   var target = event.target;
-  if (target.parentNode.classList.contains('pin') || target.classList.contains('pin')) {
+  if (target.parentNode.classList.contains('pin')) {
     var targetParent = target.parentNode;
-    for (var j = 0; j < pins.length; j++) {
-      if (pins[j].classList.contains('pin--active')) {
-        pins[j].classList.remove('pin--active');
-        pins[j].setAttribute('aria-pressed', false);
-      }
-    }
+    pinRemove()
     pinActive(targetParent);
+  } else if (target.classList.contains('pin')) {
+    pinRemove()
+    pinActive(target);
   }
 });
 
