@@ -1,7 +1,6 @@
 'use strict';
 
 var pins = document.querySelectorAll('.pin');
-var pinOne = document.querySelector('.pin');
 var pinMap = document.querySelector('.tokyo__pin-map');
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
@@ -46,8 +45,6 @@ window.initializePins = function () {
 
   dialogClose.addEventListener('click', function () {
     dialog.style.display = 'none';
-    if (pinOne.classList.contains('pin--active')) {
-      pinOne.classList.remove('pin--active');
-    }
+    pinRemove();
   });
 };

@@ -8,8 +8,8 @@ window.synchronizeFields = function (leftField, rightField, leftArray, rightArra
   });
 
   rightField.addEventListener('change', function () {
-    var rightValue = rightArray.indexOf(rightField.value);
+    var rightValue = rightArray.indexOf(rightField[valueField]);
     var leftValue = leftArray[rightValue];
-    leftField[valueField] = leftValue;
+    leftField.value = leftValue;
   });
 };
