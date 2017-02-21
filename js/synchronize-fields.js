@@ -1,7 +1,7 @@
 'use strict';
 
 window.synchronize = (function () {
-  function synchronizeFields (leftField, rightField, leftArray, rightArray, valueField) {
+  function synchronizeFields(leftField, rightField, leftArray, rightArray, valueField) {
     leftField.addEventListener('change', function () {
       var leftValue = leftArray.indexOf(leftField.value);
       var rightValue = rightArray[leftValue];
@@ -13,7 +13,6 @@ window.synchronize = (function () {
       var leftValue = leftArray[rightValue];
       leftField.value = leftValue;
     });
-  };
-
+  }
   return synchronizeFields;
 })();
