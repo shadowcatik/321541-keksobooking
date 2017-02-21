@@ -1,6 +1,6 @@
 'use strict';
 
-window.initializePins = (function () {
+(function () {
   var pins = document.querySelectorAll('.pin');
   var pinMap = document.querySelector('.tokyo__pin-map');
   var dialog = document.querySelector('.dialog');
