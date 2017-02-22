@@ -1,12 +1,12 @@
 'use strict';
 
-var pins = document.querySelectorAll('.pin');
-var pinMap = document.querySelector('.tokyo__pin-map');
-var dialog = document.querySelector('.dialog');
-var dialogClose = document.querySelector('.dialog__close');
-var ENTER_KEY_CODE = 13;
+(function () {
+  var pins = document.querySelectorAll('.pin');
+  var pinMap = document.querySelector('.tokyo__pin-map');
+  var dialog = document.querySelector('.dialog');
+  var dialogClose = document.querySelector('.dialog__close');
+  var ENTER_KEY_CODE = 13;
 
-window.initializePins = function () {
   function pinActive(pin) {
     pin.classList.add('pin--active');
     dialog.style.display = 'block';
@@ -47,4 +47,5 @@ window.initializePins = function () {
     dialog.style.display = 'none';
     pinRemove();
   });
-};
+})();
+
