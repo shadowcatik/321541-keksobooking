@@ -29,15 +29,15 @@
   };
 
   window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);
-  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);
+  window.synchronize(price, type, ['1000', '0', '1000000'], ['apartment', 'shack', 'palace'], syncValues);
 
   window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValueMin);
-  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValueMin);
+  window.synchronize(price, type, ['1000', '0', '1000000'], ['apartment', 'shack', 'palace'], syncValueMin);
 
   window.synchronize(roomNumber, capacity, ['1', '2', '100'], ['not guest', '3', '3'], syncValues);
-  window.synchronize(roomNumber, capacity, ['1', '2', '100'], ['not guest', '3', '3'], syncValues);
+  window.synchronize(capacity, roomNumber, ['not guest', '3', '3'], ['1', '2', '100'], syncValues);
 
   window.synchronize(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], syncValues);
-  window.synchronize(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], syncValues);
+  window.synchronize(timeOut, time, ['12', '13', '14'], ['12', '13', '14'], syncValues);
 
 })();
