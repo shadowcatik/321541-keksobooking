@@ -20,8 +20,24 @@
 
   address.required = true;
 
-  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], 'placeholder');
-  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], 'min');
-  window.synchronize(roomNumber, capacity, ['1', '2', '100'], ['not guest', '3', '3'], 'value');
-  window.synchronize(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], 'value');
+  var syncValues = function(element, value) {
+    element.value = value;
+  }
+
+  var syncValueMin = function(element, value) {
+    element.min = value;
+  }
+
+  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);
+  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);
+
+  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValueMin);
+  window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValueMin);
+
+  window.synchronize(roomNumber, capacity, ['1', '2', '100'], ['not guest', '3', '3'], syncValues);
+  window.synchronize(roomNumber, capacity, ['1', '2', '100'], ['not guest', '3', '3'], syncValues);
+
+  window.synchronize(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], syncValues);
+  window.synchronize(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], syncValues);
+
 })();
