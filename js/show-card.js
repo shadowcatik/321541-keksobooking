@@ -1,9 +1,9 @@
+'use strict';
+
 window.showCard = (function () {
   var dialog = document.querySelector('.dialog');
   var dialogClose = document.querySelector('.dialog__close');
-  var ENTER_KEY_CODE = 13;
   var onCardClose = null;
-  debugger;
 
   function openCard() {
     dialog.style.display = 'block';
@@ -17,13 +17,13 @@ window.showCard = (function () {
     dialogClose.removeEventListener('keydown', hideCard);
   }
 
-  var hideCard = function() {
+  var hideCard = function () {
     closeCard();
 
     if (typeof onCardClose === 'function') {
       onCardClose();
     }
-  }
+  };
 
   return function (cb) {
     openCard();
@@ -31,5 +31,5 @@ window.showCard = (function () {
     dialogClose.addEventListener('keydown', hideCard);
 
     onCardClose = cb;
-  }
+  };
 })();

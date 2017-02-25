@@ -20,13 +20,13 @@
 
   address.required = true;
 
-  var syncValues = function(element, value) {
+  var syncValues = function (element, value) {
     element.value = value;
-  }
+  };
 
-  var syncValueMin = function(element, value) {
+  var syncValueMin = function (element, value) {
     element.min = value;
-  }
+  };
 
   window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);
   window.synchronize(type, price, ['apartment', 'shack', 'palace'], ['1000', '0', '1000000'], syncValues);

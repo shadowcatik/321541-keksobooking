@@ -3,7 +3,6 @@
 (function () {
   var pins = document.querySelectorAll('.pin');
   var pinMap = document.querySelector('.tokyo__pin-map');
-  var dialogClose = document.querySelector('.dialog__close');
   var ENTER_KEY_CODE = 13;
 
   function pinActive(pin) {
@@ -32,15 +31,16 @@
     }
   });
 
-  var focusActive = function() {
+  var focusActive = function () {
     pinActive.focus();
   };
 
-  var openKeydown = function(evt) {
+  var openKeydown = function (evt) {
     if (evt.keyCode === ENTER_KEY_CODE) {
       window.showCard(focusActive);
     }
-  }
+  };
+
   pinMap.addEventListener('click', window.showCard);
   pinMap.addEventListener('keydown', openKeydown);
 
